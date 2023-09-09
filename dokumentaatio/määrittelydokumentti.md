@@ -7,4 +7,5 @@ toisen asteen Markov-ketjun. Ohjelma saa syötteeksi jonkin pitkän teksin, kute
 Trien tilavaativuus: O(n)
 Trien haku-, lisäys- ja poisto-operaatiot: O(n)
 
+## Lisätiedot
 Opiskelen tietojenkäsittelytieteen kandiohjelmassa ja toteutan työn suomeksi. En osaa muita ohjelmointikieliä kuin Pythonia.
