@@ -1,7 +1,7 @@
 import re
 import nltk
 
-sense = nltk.corpus.gutenberg.raw("austen-sense.txt")
+
 
 def puhdista_teksti(teksti):
   """Puhdistaa tekstitiedoston jättäen sanat, välilyönnit ja lopetusmerkit."""
@@ -16,6 +16,8 @@ def tokenoi_teksti(teksti):
        lauseet_sanoina.append(lause_sanoina)
     return lauseet_sanoina
 
-tokenoitu_teksti = tokenoi_teksti(puhdista_teksti(sense))
 
-print(tokenoitu_teksti)
+if __name__ == "__main__":
+    sense = nltk.corpus.gutenberg.raw("austen-sense.txt")
+    tokenoitu_teksti = tokenoi_teksti(puhdista_teksti(sense))
+    print(tokenoitu_teksti)
