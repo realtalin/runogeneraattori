@@ -1,4 +1,6 @@
+![gha badge](https://github.com/realtalin/runogeneraattori/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/realtalin/runogeneraattori/graph/badge.svg?token=IGKI5A6CHO)](https://codecov.io/gh/realtalin/runogeneraattori)
 # Runogeneraattori
+
 Markov-ketjuilla toteutettu runogeneraattori 
 
 ## Viikkoraportit
