@@ -1,6 +1,6 @@
 class TrieSolmu:
     def __init__(self):
-        """Luo solmun, jolla on kolme atribuuttia. Attribuutteja muutetaan Trien lisaa-metodissa."""
+        """Alustaa solmun"""
         self.lapset = {}
         self.on_lehtisolmu = False
         self.frekvenssi = 0
@@ -8,11 +8,11 @@ class TrieSolmu:
 
 class Trie:
     def __init__(self):
-        """Alustaa trien tyhjällä aloitussolmulla."""
+        """Alustaa trien tyhjällä aloitussolmulla"""
         self.aloitussolmu = TrieSolmu()
 
     def lisaa(self, sanajono: list):
-        """Lisää trieen yhden sanajonon, joka on lista sanoja."""
+        """Lisää trieen yhden sanajonon, joka on lista sanoja"""
         solmu = self.aloitussolmu
         for sana in sanajono:
             if sana not in solmu.lapset:

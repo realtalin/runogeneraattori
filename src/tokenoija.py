@@ -4,12 +4,16 @@ import nltk
 
 
 def puhdista_teksti(teksti):
-  """Puhdistaa tekstitiedoston jättäen sanat, välilyönnit ja lopetusmerkit."""
+  """Puhdistaa tekstitiedoston jättäen sanat, välilyönnit ja lauseiden lopetusmerkit."""
   teksti = re.sub(r'[^\w\s.!?]', '', teksti)
   return teksti
 
 def tokenoi_teksti(teksti):
-    """"Tokenoi tekstin. Palauttaa Listan listoja (lauseita), jotka koostuvat sanoista sekä pisteistä."""
+    """"Tokenoi tekstin. 
+    
+    Paluuarvot:
+    lauseet_sanoina: Lista lauseita (listoja), jotka koostuvat sanoista sekä lauseiden lopetusmerkeistä
+    """
     lauseet_sanoina = []
     for lause in nltk.sent_tokenize(teksti):
        lause_sanoina = nltk.word_tokenize(lause)
