@@ -1,12 +1,6 @@
-import re
 import nltk
+import string
 
-
-
-def puhdista_teksti(teksti):
-  """Puhdistaa tekstitiedoston jättäen sanat, välilyönnit ja lauseiden lopetusmerkit."""
-  teksti = re.sub(r'[^\w\s.!?]', '', teksti)
-  return teksti
 
 def tokenoi_teksti(teksti):
     """Tokenoi tekstin
@@ -14,8 +8,15 @@ def tokenoi_teksti(teksti):
     Paluuarvo:
         list: Lista listoja (lauseita), jotka sisältävät sanoja (str)
     """
-    lauseet_sanoina = []
+    lauseet = []
     for lause in nltk.sent_tokenize(teksti):
-       lause_sanoina = nltk.word_tokenize(lause)
-       lauseet_sanoina.append(lause_sanoina)
-    return lauseet_sanoina
+        lause_sanoina = nltk.word_tokenize(lause)
+        lauseet.append(lause_sanoina)
+
+    puhdistetut_lauseet = []
+    for lause in lauseet:
+        puhdas_lause = [sana.strip(string.punctuation) for sana in lause if len(
+            sana.strip(string.punctuation)) > 0]
+        puhdistetut_lauseet.append(puhdas_lause)
+
+    return puhdistetut_lauseet

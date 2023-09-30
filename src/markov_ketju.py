@@ -1,6 +1,7 @@
 import random
 from src.trie import Trie
 
+
 class MarkovKetju():
     def __init__(self, korpus: list, taso: int):
         """Alustaa markov-ketjun
@@ -43,8 +44,9 @@ class MarkovKetju():
         lapset = self.trie.hae_lapset(sanajono)
         if lapset == False:
             return False
-        
-        valittu_sana = random.choices(list(lapset), weights=[solmu.frekvenssi for solmu in lapset.values()])
+
+        valittu_sana = random.choices(
+            list(lapset), weights=[solmu.frekvenssi for solmu in lapset.values()])
         return valittu_sana[0]
 
     def generoi_lause(self, max_pituus: int):
@@ -61,7 +63,7 @@ class MarkovKetju():
         for sana in alkutila:
             lause.append(sana)
 
-        for i in range(max_pituus - 1):
+        for _ in range(max_pituus - 1):
             seuraava_sana = self.valitse_sana(alkutila)
             if seuraava_sana == False:
                 return lause
