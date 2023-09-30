@@ -1,7 +1,6 @@
 import unittest
 import nltk
-
-from src.tokenoija import tokenoi_teksti
+from tokenoija import tokenoi_teksti
 
 
 class TestTokenoija(unittest.TestCase):

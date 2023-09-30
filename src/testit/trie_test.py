@@ -1,6 +1,5 @@
 import unittest
-
-from src.trie import Trie
+from trie import Trie
 
 
 class TestTrie(unittest.TestCase):

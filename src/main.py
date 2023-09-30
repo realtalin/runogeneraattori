@@ -1,6 +1,6 @@
 import nltk
-from src.tokenoija import tokenoi_teksti
-from src.markov_ketju import MarkovKetju
+from tokenoija import tokenoi_teksti
+from markov_ketju import MarkovKetju
 
 if __name__ == "__main__":
     teksti = nltk.corpus.gutenberg.raw("austen-sense.txt")

@@ -1,5 +1,5 @@
 import random
-from src.trie import Trie
+from trie import Trie
 
 
 class MarkovKetju():

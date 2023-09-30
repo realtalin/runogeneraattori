@@ -1,6 +1,5 @@
 import unittest
-
-from src.markov_ketju import MarkovKetju
+from markov_ketju import MarkovKetju
 
 
 class TestMarkovKetju(unittest.TestCase):
