@@ -1,5 +1,5 @@
 import random
-from trie import Trie
+from src.trie import Trie
 
 class MarkovKetju():
     def __init__(self, korpus: list, taso: int):
