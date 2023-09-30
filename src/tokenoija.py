@@ -2,8 +2,11 @@ import nltk
 import string
 
 
-def tokenoi_teksti(teksti):
+def tokenoi_teksti(teksti: str):
     """Tokenoi tekstin
+
+    Parametrit:
+        teksti: Opetusdata merkkijonona, esim. kirja.
 
     Paluuarvo:
         list: Lista listoja (lauseita), jotka sisältävät sanoja (str)
