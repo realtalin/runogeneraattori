@@ -20,3 +20,20 @@ class Trie:
             solmu = solmu.lapset[sana]
             solmu.frekvenssi += 1
         solmu.on_lehtisolmu = True
+
+    def hae_lapset(self, sanajono: list):
+        """Hakee kaikki sanajonon viimeisen sanan lapset
+        Args:
+            sanajono (list): Lista sanoja
+
+        Returns:
+            dict: Sanakirja jossa sana:solmu-pareja
+        """
+        solmu = self.aloitussolmu
+        for sana in sanajono:
+            if sana not in solmu.lapset:
+                if sana == "":
+                    return solmu.lapset
+                return False
+            solmu = solmu.lapset[sana]
+        return solmu.lapset
