@@ -1,0 +1,3 @@
+# Toteutus
+
+Ohjelma koostuu kahdesta pääluokasta ja yhdesta apufunktiosta. Trie ja sen solut ovat toteutettu omissa luokissaan, ja Trien metodeja ovat solujen lisääminen ja lapsien etsiminen. MarkovKetju-sisältää metodit Trien generoimiseen opetusdatasta, sekä lauseiden generoimiseen rakennetusta Triestä. Tokenoija-moduulin apufunktio käsittelee raa'an tekstin MarkovKetju-luokan metodille sopivaan muotoon, eli tokenoi sen lauseiksi ja sanoiksi.
