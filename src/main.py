@@ -2,12 +2,22 @@ import nltk
 from tokenoija import tokenoi_teksti
 from markov_ketju import MarkovKetju
 
-if __name__ == "__main__":
+
+def main():
     teksti = nltk.corpus.gutenberg.raw("austen-sense.txt")
     tokenoitu_teksti = tokenoi_teksti(teksti)
-    ketju = MarkovKetju(tokenoitu_teksti, 3)
+
+    taso = int(input("Monennen tason Markov-ketju? "))
+    pituus = int(input("Lauseiden maksimipituus? "))
+    maara = int(input("Kuinka monta lausetta? "))
+
+    ketju = MarkovKetju(tokenoitu_teksti, taso)
     ketju.luo_sanajonot()
     ketju.generoi_trie()
-    lause = ketju.generoi_lause(10)
 
-    print(lause)
+    for _ in range(maara):
+        print(ketju.generoi_lause(pituus))
+
+
+if __name__ == "__main__":
+    main()
