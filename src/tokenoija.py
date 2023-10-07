@@ -1,5 +1,5 @@
-import nltk
 import string
+import nltk
 
 
 def tokenoi_teksti(teksti: str):
@@ -18,8 +18,11 @@ def tokenoi_teksti(teksti: str):
 
     puhdistetut_lauseet = []
     for lause in lauseet:
-        puhdas_lause = [sana.strip(string.punctuation) for sana in lause if len(
-            sana.strip(string.punctuation)) > 0]
+        puhdas_lause = [
+            sana.strip(string.punctuation)
+            for sana in lause
+            if len(sana.strip(string.punctuation)) > 0
+        ]
         puhdistetut_lauseet.append(puhdas_lause)
 
     return puhdistetut_lauseet
