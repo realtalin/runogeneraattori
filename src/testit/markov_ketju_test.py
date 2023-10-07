@@ -1,3 +1,4 @@
+from collections import Counter
 import unittest
 from markov_ketju import MarkovKetju
 
@@ -79,3 +80,41 @@ class TestMarkovKetju(unittest.TestCase):
             .lapset["raikkaalta"]
             .on_lehtisolmu
         )
+
+    def test_valitse_sana_sanajonolla_ei_lapsia(self):
+        ketju = MarkovKetju(self.korpus, 2)
+
+        self.assertFalse(ketju.valitse_sana(["ja", "puhdas"]))
+        self.assertFalse(ketju.valitse_sana(["tuoksuu", "raikkaalta"]))
+
+    def test_valitse_sana_sanajonolla_yksi_lapsi(self):
+        ketju = MarkovKetju(self.korpus, 2)
+
+        self.assertEqual(ketju.valitse_sana(["raikas", "ja"]), "puhdas")
+        self.assertEqual(ketju.valitse_sana(["jälkeen", "maa"]), "tuoksuu")
+
+    def test_valitse_sana_kaksi_mahdollista_valitsee_toisen(self):
+        ketju = MarkovKetju(self.korpus, 2)
+
+        valittu_sana = ketju.valitse_sana(["Sateen", "jälkeen"])
+        self.assertTrue(valittu_sana in ["maa", "ilma"])
+
+    def test_valitse_sana_kolme_mahdollista_eri_frekvensseilla(self):
+        korpus = [
+            ["Minä", "olen", "koira"],
+            ["Minä", "olen", "koira"],
+            ["Minä", "olen", "koira"],
+            ["Minä", "olen", "kissa"],
+        ]
+
+        ketju = MarkovKetju(korpus, 2)
+
+        valitut_sanat = []
+
+        for _ in range(10000):
+            valitut_sanat.append(ketju.valitse_sana(["Minä", "olen"]))
+
+        counts = Counter(valitut_sanat)
+
+        self.assertTrue(2400 < counts["kissa"] < 2600)
+        self.assertTrue(7400 < counts["koira"] < 7600)
