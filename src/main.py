@@ -3,6 +3,17 @@ from runogeneroija import generoi_ketju, generoi_runo
 
 
 def pyyda_numero(pyynto: str, minimi, maksimi, nolla_lopettaa=False):
+    """Pyytää ja validoi käyttäjältä numeron
+
+    Args:
+        pyynto (str): Pyyntoteksti
+        minimi (int): Minimiarvo
+        maksimi (int): Maksimiarvo
+        nolla_lopettaa (bool, optional): Kutsuuko annettu 0 pääfunktiota uudelleen. Oletusarvoisesti False.
+
+    Returns:
+        arvo: Käyttäjän antama validoitu numero
+    """
     while True:
         try:
             arvo = int(input(pyynto))
