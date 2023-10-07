@@ -14,7 +14,6 @@ def generoi_ketju(teksti, taso):
     """
     tokenoitu_teksti = tokenoi_teksti(teksti)
     ketju = MarkovKetju(tokenoitu_teksti, taso)
-    ketju.generoi_trie()
 
     return ketju
 

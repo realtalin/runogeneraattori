@@ -14,7 +14,7 @@ class MarkovKetju:
         self.korpus = korpus
         self.taso = taso
         self.sanajonojen_pituus = taso + 1
-        self.trie = Trie()
+        self.trie = self._generoi_trie()
 
     def _luo_sanajonot(self):
         """Luo kaikki taso + 1 pitkät sanajonot korpuksen lauseista"""
@@ -28,10 +28,13 @@ class MarkovKetju:
 
         return sanajonot
 
-    def generoi_trie(self):
+    def _generoi_trie(self):
         """Lisää sanajonot trieen"""
+        trie = Trie()
         for sanajono in self._luo_sanajonot():
-            self.trie.lisaa(sanajono)
+            trie.lisaa(sanajono)
+
+        return trie
 
     def valitse_sana(self, sanajono: list):
         """Valitsee satunnaisesti frekvenssit painoina sanajonon viimeisen sanan lapsisolmun

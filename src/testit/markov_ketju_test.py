@@ -11,7 +11,6 @@ class TestMarkovKetju(unittest.TestCase):
 
     def test_generoi_tason_2_trie(self):
         ketju = MarkovKetju(self.korpus, 2)
-        ketju.generoi_trie()
 
         self.assertEqual(len(ketju.trie.aloitussolmu.lapset), 7)
 
@@ -58,7 +57,6 @@ class TestMarkovKetju(unittest.TestCase):
 
     def test_generoi_tason_3_trie(self):
         ketju = MarkovKetju(self.korpus, 3)
-        ketju.generoi_trie()
 
         self.assertEqual(len(ketju.trie.aloitussolmu.lapset), 5)
 
