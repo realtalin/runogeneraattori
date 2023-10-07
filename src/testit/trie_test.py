@@ -80,7 +80,7 @@ class TestTrie(unittest.TestCase):
             self.trie.aloitussolmu.lapset["Minä"].lapset["olen"].frekvenssi, 2
         )
 
-    def test_hae_lapset(self):
+    def test_hae_lapset_haettava_sanajono_on(self):
         self.trie.lisaa(["Minä", "olen", "ihminen"])
         self.trie.lisaa(["Minä", "olen", "koira"])
         self.trie.lisaa(["Minä", "olen", "kissa"])
@@ -91,3 +91,22 @@ class TestTrie(unittest.TestCase):
         self.assertTrue("koira" in hakutulos)
         self.assertTrue("kissa" in hakutulos)
         self.assertEqual(len(hakutulos), 3)
+
+    def test_hae_lapset_haettavaa_sanajonoa_ei_ole(self):
+        self.trie.lisaa(["Minä", "olen", "ihminen"])
+
+        mina_hakutulos = self.trie.hae_lapset(["Minä", "en"])
+        sina_hakutulos = self.trie.hae_lapset(["Sinä", "olet"])
+
+        self.assertFalse(mina_hakutulos)
+        self.assertFalse(sina_hakutulos)
+
+    def test_hae_lapset_tyhjalla_sanajonolla(self):
+        self.trie.lisaa(["Minä", "olen", "ihminen"])
+        self.trie.lisaa(["Sinä", "olet", "ihminen"])
+
+        hakutulos = self.trie.hae_lapset([""])
+
+        self.assertTrue("Minä" in hakutulos)
+        self.assertTrue("Sinä" in hakutulos)
+        self.assertEqual(len(hakutulos), 2)

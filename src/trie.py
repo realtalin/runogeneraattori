@@ -22,7 +22,8 @@ class Trie:
         solmu.on_lehtisolmu = True
 
     def hae_lapset(self, sanajono: list):
-        """Hakee kaikki sanajonon viimeisen sanan lapset
+        """Hakee kaikki sanajonon viimeisen sanan lapset. Jos
+           sanajono on tyhjä, palauttaa alkusolmun lapset.
         Args:
             sanajono (list): Lista sanoja
 
