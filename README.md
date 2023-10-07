@@ -17,3 +17,4 @@ Markov-ketjuilla toteutettu runogeneraattori
 - [Viikko 2](https://github.com/realtalin/runogeneraattori/blob/master/dokumentaatio/viikkoraportit/viikko2.md)
 - [Viikko 3](https://github.com/realtalin/runogeneraattori/blob/master/dokumentaatio/viikkoraportit/viikko3.md)
 - [Viikko 4](https://github.com/realtalin/runogeneraattori/blob/master/dokumentaatio/viikkoraportit/viikko4.md)
+- [Viikko 5](https://github.com/realtalin/runogeneraattori/blob/master/dokumentaatio/viikkoraportit/viikko5.md)
