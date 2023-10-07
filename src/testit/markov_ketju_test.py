@@ -114,7 +114,47 @@ class TestMarkovKetju(unittest.TestCase):
         for _ in range(10000):
             valitut_sanat.append(ketju.valitse_sana(["Minä", "olen"]))
 
-        counts = Counter(valitut_sanat)
+        maarat = Counter(valitut_sanat)
 
-        self.assertTrue(2400 < counts["kissa"] < 2600)
-        self.assertTrue(7400 < counts["koira"] < 7600)
+        self.assertTrue(7400 < maarat["koira"] < 7600)
+        self.assertTrue(2400 < maarat["kissa"] < 2600)
+
+    def test_generoi_lause_yksi_sanajono_triessa_oikean_pituinen_lause(self):
+        korpus = [["Minä", "olen", "ihminen"]]
+
+        ketju = MarkovKetju(korpus, 2)
+
+        lause = ketju.generoi_lause(3)
+
+        self.assertEqual(lause, ["Minä", "olen", "ihminen"])
+
+    def test_generoi_lause_yksi_sanajono_triessa_liian_pitka_lause(self):
+        korpus = [["Minä", "olen", "ihminen"]]
+
+        ketju = MarkovKetju(korpus, 2)
+
+        lause = ketju.generoi_lause(10)
+
+        self.assertEqual(lause, ["Minä", "olen", "ihminen"])
+
+    def test_generoi_lause_yksi_sanajono_triessa_lyhyt_lause(self):
+        korpus = [["Minä", "olen", "ihminen"]]
+
+        ketju = MarkovKetju(korpus, 2)
+
+        lause = ketju.generoi_lause(2)
+
+        self.assertEqual(lause, ["Minä", "olen"])
+
+    def test_generoi_lauseita_kaksi_sanajonoa_triessa(self):
+        korpus = [["Minä", "en", "ole", "ihminen"]]
+
+        ketju = MarkovKetju(korpus, 2)
+
+        lauseet = []
+
+        for _ in range(100):
+            lauseet.append(ketju.generoi_lause(3))
+
+        self.assertTrue(["Minä", "en", "ole"] in lauseet)
+        self.assertTrue(["en", "ole", "ihminen"] in lauseet)
