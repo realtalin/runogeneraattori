@@ -47,7 +47,7 @@ def main():
         )
 
         rivin_pituus = pyyda_numero(
-            "Rivien maksimipituus? (1-20) ",
+            "Rivien pituus? (1-20) ",
             1,
             20,
         )
