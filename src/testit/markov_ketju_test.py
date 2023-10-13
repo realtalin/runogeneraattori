@@ -7,7 +7,8 @@ class TestMarkovKetju(unittest.TestCase):
     def setUp(self):
         self.korpus = [
             ["Sateen", "jälkeen", "maa", "tuoksuu", "raikkaalta"],
-            ["Sateen", "jälkeen", "ilma", "on", "yleensä", "raikas", "ja", "puhdas"],
+            ["Sateen", "jälkeen", "ilma", "on",
+                "yleensä", "raikas", "ja", "puhdas"],
         ]
 
     def test_generoi_tason_2_trie(self):
@@ -15,11 +16,14 @@ class TestMarkovKetju(unittest.TestCase):
 
         self.assertEqual(len(ketju.trie.aloitussolmu.lapset), 7)
 
-        self.assertEqual(ketju.trie.aloitussolmu.lapset["Sateen"].frekvenssi, 2)
-        self.assertEqual(ketju.trie.aloitussolmu.lapset["jälkeen"].frekvenssi, 2)
+        self.assertEqual(
+            ketju.trie.aloitussolmu.lapset["Sateen"].frekvenssi, 2)
+        self.assertEqual(
+            ketju.trie.aloitussolmu.lapset["jälkeen"].frekvenssi, 2)
 
         self.assertEqual(ketju.trie.aloitussolmu.lapset["maa"].frekvenssi, 1)
-        self.assertEqual(ketju.trie.aloitussolmu.lapset["raikas"].frekvenssi, 1)
+        self.assertEqual(
+            ketju.trie.aloitussolmu.lapset["raikas"].frekvenssi, 1)
 
         self.assertEqual(
             ketju.trie.aloitussolmu.lapset["Sateen"].lapset["jälkeen"].frekvenssi, 2
@@ -149,3 +153,12 @@ class TestMarkovKetju(unittest.TestCase):
 
         self.assertTrue(["Minä", "en", "ole"] in lauseet)
         self.assertTrue(["en", "ole", "ihminen"] in lauseet)
+
+    def test_tavuja_lauseessa(self):
+        ketju = MarkovKetju(self.korpus, 3)
+
+        tavuja_1 = ketju.tavuja_lauseessa(["I", "am", "a", "human"])
+        tavuja_2 = ketju.tavuja_lauseessa(["I", "am", "a", "monster"])
+
+        self.assertEqual(tavuja_1, 5)
+        self.assertEqual(tavuja_2, 5)
