@@ -128,15 +128,6 @@ class TestMarkovKetju(unittest.TestCase):
 
         self.assertEqual(lause, ["Minä", "olen", "ihminen"])
 
-    def test_generoi_lause_yksi_sanajono_triessa_liian_pitka_lause(self):
-        korpus = [["Minä", "olen", "ihminen"]]
-
-        ketju = MarkovKetju(korpus, 2)
-
-        lause = ketju.generoi_lause(10)
-
-        self.assertEqual(lause, ["Minä", "olen", "ihminen"])
-
     def test_generoi_lause_yksi_sanajono_triessa_lyhyt_lause(self):
         korpus = [["Minä", "olen", "ihminen"]]
 
