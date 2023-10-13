@@ -24,10 +24,10 @@ def generoi_runo(ketju, riveja, rivin_pituus):
     Args:
         ketju (MarkovKetju): Markov-ketju, jonka sanajonot ja trie on generoitu
         riveja (int): Rivien määrä
-        rivin_pituus (int): Rivien maksimipituus
+        rivin_pituus (int): Rivien pituus
 
     Returns:
-        str: Runo merkkijonoina rivinvaihtoineen
+        str: Runo merkkijonona rivinvaihtoineen
     """
     lauseet = []
     for _ in range(riveja):
