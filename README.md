@@ -1,15 +1,15 @@
 ![ci badge](https://github.com/realtalin/runogeneraattori/workflows/CI/badge.svg) ![lint badge](https://github.com/realtalin/runogeneraattori/workflows/pylint/badge.svg) [![codecov](https://codecov.io/gh/realtalin/runogeneraattori/graph/badge.svg?token=IGKI5A6CHO)](https://codecov.io/gh/realtalin/runogeneraattori)
 # Runogeneraattori
 
-Markov-ketjuilla toteutettu runogeneraattori 
+Markov-ketjuilla toteutettu runogeneraattori Helsingin Yliopiston Algoritmit ja tekoäly -harjoitustyökurssia varten
 
 ## Käyttöohje
 
 1. Asenna [Python](https://www.python.org/downloads/) (^3.8) ja [Poetry](https://python-poetry.org/docs/#installation)
 2. Kloonaa repositorio
-3. Asenna riippuvuudet komennolla ```poetry install```
+3. Asenna riippuvuudet komennolla ```poetry install``` 
 4. Siirry virtuaaliympäristöön komennolla ```poetry shell```
-5. Alusta sovellus komennolla ```invoke alusta```
+5. Alusta sovellus komennolla ```invoke alusta``` (*Huom!* Lataa kielenkäsitellydatan kotihakemistoosi)
 6. Generoi lauseita komennolla ```invoke generoi```
 
 ## Viikkoraportit
