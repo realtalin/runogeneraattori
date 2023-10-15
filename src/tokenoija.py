@@ -1,5 +1,10 @@
 import string
+from os import path
 import nltk
+
+
+nltk_dir = path.join(path.dirname(path.abspath(__file__)), "..", "nltk_data")
+nltk.data.path.append(nltk_dir)
 
 
 def tokenoi_teksti(teksti: str):
