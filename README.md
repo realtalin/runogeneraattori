@@ -9,8 +9,7 @@ Markov-ketjuilla toteutettu runogeneraattori Helsingin Yliopiston Algoritmit ja 
 2. Kloonaa repositorio
 3. Asenna riippuvuudet komennolla ```poetry install``` 
 4. Siirry virtuaaliympäristöön komennolla ```poetry shell```
-5. Alusta sovellus komennolla ```invoke alusta``` (*Huom!* Lataa kielenkäsitellydatan kotihakemistoosi)
-6. Generoi lauseita komennolla ```invoke generoi```
+5. Generoi lauseita komennolla ```invoke generoi```
 
 ## Viikkoraportit
 - [Viikko 1](https://github.com/realtalin/runogeneraattori/blob/master/dokumentaatio/viikkoraportit/viikko1.md)
