@@ -1,4 +1,5 @@
 import random
+import syllables
 from trie import Trie
 
 
@@ -36,6 +37,13 @@ class MarkovKetju:
 
         return trie
 
+    def tavuja_lauseessa(self, sanajono: list):
+        """Arvioi tavujen määrän engalnninkielisessä lauseessa"""
+        tavuja = 0
+        for sana in sanajono:
+            tavuja += syllables.estimate(sana)
+        return tavuja
+
     def valitse_sana(self, sanajono: list):
         """Valitsee satunnaisesti frekvenssit painoina sanajonon viimeisen sanan lapsisolmun
 
@@ -55,11 +63,11 @@ class MarkovKetju:
         )
         return valittu_sana[0]
 
-    def generoi_lause(self, max_pituus: int):
+    def generoi_lause(self, pituus):
         """Generoi lauseen käyttämällä luokan trieä
 
         Parametrit:
-            max_pituus (int): Lauseen maksimipituus
+            pituus (int): Lauseen pituus
 
         Palautusarvo:
             list: Lista sanoista (str), eli lause
@@ -69,10 +77,10 @@ class MarkovKetju:
         for sana in alkutila:
             lause.append(sana)
 
-        for _ in range(max_pituus - 1):
+        for _ in range(pituus - 1):
             seuraava_sana = self.valitse_sana(alkutila)
             if seuraava_sana is False:
-                return lause
+                return self.generoi_lause(pituus)
             lause.append(seuraava_sana)
 
             if len(alkutila) >= self.taso:
