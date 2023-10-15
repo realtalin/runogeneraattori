@@ -7,8 +7,7 @@ class TestMarkovKetju(unittest.TestCase):
     def setUp(self):
         self.korpus = [
             ["Sateen", "jälkeen", "maa", "tuoksuu", "raikkaalta"],
-            ["Sateen", "jälkeen", "ilma", "on",
-                "yleensä", "raikas", "ja", "puhdas"],
+            ["Sateen", "jälkeen", "ilma", "on", "yleensä", "raikas", "ja", "puhdas"],
         ]
 
     def test_generoi_tason_2_trie(self):
@@ -16,14 +15,11 @@ class TestMarkovKetju(unittest.TestCase):
 
         self.assertEqual(len(ketju.trie.aloitussolmu.lapset), 7)
 
-        self.assertEqual(
-            ketju.trie.aloitussolmu.lapset["Sateen"].frekvenssi, 2)
-        self.assertEqual(
-            ketju.trie.aloitussolmu.lapset["jälkeen"].frekvenssi, 2)
+        self.assertEqual(ketju.trie.aloitussolmu.lapset["Sateen"].frekvenssi, 2)
+        self.assertEqual(ketju.trie.aloitussolmu.lapset["jälkeen"].frekvenssi, 2)
 
         self.assertEqual(ketju.trie.aloitussolmu.lapset["maa"].frekvenssi, 1)
-        self.assertEqual(
-            ketju.trie.aloitussolmu.lapset["raikas"].frekvenssi, 1)
+        self.assertEqual(ketju.trie.aloitussolmu.lapset["raikas"].frekvenssi, 1)
 
         self.assertEqual(
             ketju.trie.aloitussolmu.lapset["Sateen"].lapset["jälkeen"].frekvenssi, 2

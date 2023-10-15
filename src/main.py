@@ -4,9 +4,10 @@ from runogeneroija import generoi_ketju, generoi_runo
 
 
 def lataa_nltk_data():
-    """Lataa tarvittavan NLTK-moduulin datan kun ohjelma ajetaan ensimmäisen kerran"""
+    """Lataa NLTK-datan kun ohjelma ajetaan ensimmäisen kerran"""
     nltk_dir = path.join(path.dirname(path.abspath(__file__)), "..", "nltk_data")
     nltk.data.path.append(nltk_dir)
+
     if not path.isdir(nltk_dir):
         nltk.download("punkt", download_dir=nltk_dir)
         nltk.download("gutenberg", download_dir=nltk_dir)
@@ -19,7 +20,7 @@ def pyyda_numero(pyynto: str, minimi, maksimi, nolla_lopettaa=False):
         pyynto (str): Pyyntoteksti
         minimi (int): Minimiarvo
         maksimi (int): Maksimiarvo
-        nolla_lopettaa (bool, optional): Kutsuuko annettu 0 pääfunktiota uudelleen. Oletusarvoisesti False.
+        nolla_lopettaa (bool, optional): Kutsuuko annettu 0 main().
 
     Returns:
         arvo: Käyttäjän antama validoitu numero

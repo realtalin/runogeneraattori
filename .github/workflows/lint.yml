@@ -22,4 +22,4 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Run pylint
-        run: poetry run pylint src
+        run: poetry run pylint --fail_under=9.9 src

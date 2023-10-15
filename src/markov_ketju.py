@@ -4,6 +4,8 @@ from trie import Trie
 
 
 class MarkovKetju:
+    """Luokka lauseiden generoimiseen opetusdatasta"""
+
     def __init__(self, korpus: list, taso: int):
         """Alustaa markov-ketjun
 
@@ -45,7 +47,8 @@ class MarkovKetju:
         return tavuja
 
     def valitse_sana(self, sanajono: list):
-        """Valitsee satunnaisesti frekvenssit painoina sanajonon viimeisen sanan lapsisolmun
+        """Valitsee satunnaisesti
+        sanajonon viimeisen sanan lapsisolmun
 
         Parametrit:
             sanajono (list): Lista sanoja (str)
@@ -58,10 +61,10 @@ class MarkovKetju:
         if lapset is False:
             return False
 
-        valittu_sana = random.choices(
+        sana = random.choices(
             list(lapset), weights=[solmu.frekvenssi for solmu in lapset.values()]
         )
-        return valittu_sana[0]
+        return sana[0]
 
     def generoi_lause(self, pituus):
         """Generoi lauseen käyttämällä luokan trieä
