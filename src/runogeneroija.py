@@ -18,7 +18,7 @@ def generoi_ketju(teksti, taso):
     return ketju
 
 
-def generoi_runo(ketju, riveja, rivin_pituus):
+def generoi_runo_pituudella(ketju, riveja, rivin_pituus):
     """Generoi runon
 
     Args:
@@ -33,6 +33,18 @@ def generoi_runo(ketju, riveja, rivin_pituus):
     for _ in range(riveja):
         lauseet.append(ketju.generoi_lause_pituudella(rivin_pituus))
 
+    return lauseet_runoksi(lauseet)
+
+
+def generoi_runo_runomitalla(ketju, runomitta: tuple):
+    lauseet = []
+    for tavuja in runomitta:
+        lauseet.append(ketju.generoi_lause_tavuilla(tavuja))
+
+    return lauseet_runoksi(lauseet)
+
+
+def lauseet_runoksi(lauseet: list):
     lauseet_merkkijonoina = [" ".join(lause) for lause in lauseet]
 
     runo = "\n"

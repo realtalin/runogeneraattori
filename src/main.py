@@ -1,7 +1,11 @@
 from os import path
 import nltk
 from simple_term_menu import TerminalMenu
-from runogeneroija import generoi_ketju, generoi_runo
+from runogeneroija import (
+    generoi_ketju,
+    generoi_runo_pituudella,
+    generoi_runo_runomitalla,
+)
 
 
 def lataa_nltk_data():
@@ -42,12 +46,11 @@ def pyyda_numero(pyynto: str, minimi, maksimi):
 
 def main():
     asetukset = [
+        "Lopeta",
+        "Generoi runo",
         "Teksti: ",
         "Markovin ketjun taso: ",
-        "Runon pituus: ",
-        "Rivien pituus: ",
-        "Generoi runo",
-        "Lopeta",
+        "Runomitta: ",
     ]
 
     tekstit = [
@@ -56,64 +59,108 @@ def main():
         "Hamlet, William Shakespeare",
     ]
 
-    menu = TerminalMenu(asetukset)
+    runomitat = [
+        "Vapaa",
+        "Haiku",
+        "Tanka",
+    ]
+
+    paavalikko = TerminalMenu(asetukset)
 
     while True:
-        menu_valinta = menu.show()
+        paavalikko_valinta = paavalikko.show()
 
-        if menu_valinta == 0:
-            tekstimenu = TerminalMenu(tekstit)
-            tekstimenu_valinta = tekstimenu.show()
+        if paavalikko_valinta == 0:
+            break
 
-            if tekstimenu_valinta == 0:
+        if paavalikko_valinta == 1:
+            try:
+                if runomitta is None:
+                    print(generoi_runo_pituudella(ketju, riveja, rivin_pituus))
+
+                else:
+                    print(generoi_runo_runomitalla(ketju, runomitta))
+
+            except UnboundLocalError:
+                print(
+                    "Valitse ensin teksti, ketjun taso, runomitta, ja mahdollisesti runon pituus sekä rivien pituus"
+                )
+
+        if paavalikko_valinta == 2:
+            tekstivalikko = TerminalMenu(tekstit)
+            tekstivalikko_valinta = tekstivalikko.show()
+
+            if tekstivalikko_valinta == 0:
                 teksti = nltk.corpus.gutenberg.raw("austen-sense.txt")
 
-            elif tekstimenu_valinta == 1:
+            if tekstivalikko_valinta == 1:
                 teksti = nltk.corpus.gutenberg.raw("melville-moby_dick.txt")
 
-            elif tekstimenu_valinta == 2:
+            if tekstivalikko_valinta == 2:
                 teksti = nltk.corpus.gutenberg.raw("shakespeare-hamlet.txt")
 
-            asetukset[0] = f"Teksti: {tekstit[tekstimenu_valinta]}"
-            menu = TerminalMenu(asetukset)
+            asetukset[2] = f"Teksti: {tekstit[tekstivalikko_valinta]}"
+            asetukset[3] = "Markovin ketjun taso: "
+            taso = None
+            ketju = None
+            paavalikko = TerminalMenu(asetukset)
 
-        if menu_valinta == 1:
+        if paavalikko_valinta == 3:
             taso = pyyda_numero("Markovin ketjun taso (1-6): ", 1, 6)
-            ketju = generoi_ketju(teksti, taso)
+            asetukset[3] = f"Markovin ketjun taso: {taso}"
+            try:
+                ketju = generoi_ketju(teksti, taso)
+            except UnboundLocalError:
+                print("Valitse ensin teksti")
+                asetukset[3] = "Markovin ketjun taso: "
 
-            asetukset[1] = f"Markovin ketjun taso: {taso}"
-            menu = TerminalMenu(asetukset)
+            paavalikko = TerminalMenu(asetukset)
 
-        if menu_valinta == 2:
+        if paavalikko_valinta == 4:
+            runomittavalikko = TerminalMenu(runomitat)
+            runomittavalikko_valinta = runomittavalikko.show()
+
+            if runomittavalikko_valinta == 0:
+                runomitta = None
+                riveja = None
+                rivin_pituus = None
+                asetukset.append("Runon pituus: ")
+                asetukset.append("Rivien pituus: ")
+
+            if runomittavalikko_valinta == 1:
+                runomitta = (5, 7, 5)
+                if len(asetukset) > 5:
+                    for _ in range(2):
+                        asetukset.pop()
+
+            if runomittavalikko_valinta == 2:
+                runomitta = (5, 7, 5, 7, 7)
+                if len(asetukset) > 5:
+                    for _ in range(2):
+                        asetukset.pop()
+
+            asetukset[4] = f"Runomitta: {runomitat[runomittavalikko_valinta]}"
+            paavalikko = TerminalMenu(asetukset)
+
+        if paavalikko_valinta == 5:
             riveja = pyyda_numero(
-                "Runon pituus (1-100): ",
+                "Runon pituus (1-100 riviä): ",
                 1,
                 100,
             )
 
-            asetukset[2] = f"Runon pituus: {riveja}"
-            menu = TerminalMenu(asetukset)
+            asetukset[5] = f"Runon pituus: {riveja} riviä"
+            paavalikko = TerminalMenu(asetukset)
 
-        if menu_valinta == 3:
+        if paavalikko_valinta == 6:
             rivin_pituus = pyyda_numero(
-                "Rivien pituus (1-20): ",
+                "Rivien pituus (1-20 sanaa): ",
                 1,
                 20,
             )
 
-            asetukset[3] = f"Rivien pituus: {rivin_pituus}"
-            menu = TerminalMenu(asetukset)
-
-        if menu_valinta == 4:
-            try:
-                print(generoi_runo(ketju, riveja, rivin_pituus))
-            except UnboundLocalError:
-                print(
-                    "Valitse ensin teksti, ketjun taso, runon pituus ja rivien pituus"
-                )
-
-        if menu_valinta == 5:
-            break
+            asetukset[6] = f"Rivien pituus: {rivin_pituus} sanaa"
+            paavalikko = TerminalMenu(asetukset)
 
 
 if __name__ == "__main__":
