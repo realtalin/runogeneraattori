@@ -19,7 +19,7 @@ def generoi_ketju(teksti, taso):
 
 
 def generoi_runo_pituudella(ketju, riveja, rivin_pituus):
-    """Generoi runon
+    """Generoi runon rivimäärällä ja tietyn pituisilla riveillä
 
     Args:
         ketju (MarkovKetju): Markov-ketju, jonka sanajonot ja trie on generoitu
@@ -37,6 +37,15 @@ def generoi_runo_pituudella(ketju, riveja, rivin_pituus):
 
 
 def generoi_runo_runomitalla(ketju, runomitta: tuple):
+    """Generoi runon runomitan mukaan
+
+    Args:
+        ketju (MarkovKetju): Markov-ketju, jonka sanajonot ja trie on generoitu
+        runomitta (tuple): Tuple, jonka arvot ovat lauseiden tavujen määriä
+
+    Returns:
+        str: Runo merkkijonona rivinvaihtoineen
+    """
     lauseet = []
     for tavuja in runomitta:
         lauseet.append(ketju.generoi_lause_tavuilla(tavuja))
@@ -45,6 +54,14 @@ def generoi_runo_runomitalla(ketju, runomitta: tuple):
 
 
 def lauseet_runoksi(lauseet: list):
+    """Luo listasta lauseita runon, joka on yksi merkkijono
+
+    Args:
+        lauseet (list): Lista lauseita, jotka ovat listoja sanoja
+
+    Returns:
+        str: Runo merkkijonona rivinvaihtoineen
+    """
     lauseet_merkkijonoina = [" ".join(lause) for lause in lauseet]
 
     runo = "\n"

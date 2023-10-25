@@ -45,6 +45,7 @@ def pyyda_numero(pyynto: str, minimi, maksimi):
 
 
 def main():
+    """Valikko runon generoimiseen"""
     asetukset = [
         "Lopeta",
         "Generoi runo",
