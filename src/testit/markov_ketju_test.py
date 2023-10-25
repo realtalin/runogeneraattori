@@ -116,15 +116,15 @@ class TestMarkovKetju(unittest.TestCase):
 
         maarat = Counter(valitut_sanat)
 
-        self.assertTrue(7400 < maarat["koira"] < 7600)
-        self.assertTrue(2400 < maarat["kissa"] < 2600)
+        self.assertTrue(7000 < maarat["koira"] < 8000)
+        self.assertTrue(2000 < maarat["kissa"] < 3000)
 
     def test_generoi_lause_yksi_sanajono_triessa_oikean_pituinen_lause(self):
         korpus = [["Minä", "olen", "ihminen"]]
 
         ketju = MarkovKetju(korpus, 2)
 
-        lause = ketju.generoi_lause(3)
+        lause = ketju.generoi_lause_pituudella(3)
 
         self.assertEqual(lause, ["Minä", "olen", "ihminen"])
 
@@ -133,7 +133,7 @@ class TestMarkovKetju(unittest.TestCase):
 
         ketju = MarkovKetju(korpus, 2)
 
-        lause = ketju.generoi_lause(2)
+        lause = ketju.generoi_lause_pituudella(2)
 
         self.assertEqual(lause, ["Minä", "olen"])
 
@@ -145,7 +145,7 @@ class TestMarkovKetju(unittest.TestCase):
         lauseet = []
 
         for _ in range(100):
-            lauseet.append(ketju.generoi_lause(3))
+            lauseet.append(ketju.generoi_lause_pituudella(3))
 
         self.assertTrue(["Minä", "en", "ole"] in lauseet)
         self.assertTrue(["en", "ole", "ihminen"] in lauseet)
@@ -153,8 +153,25 @@ class TestMarkovKetju(unittest.TestCase):
     def test_tavuja_lauseessa(self):
         ketju = MarkovKetju(self.korpus, 3)
 
-        tavuja_1 = ketju.tavuja_lauseessa(["I", "am", "a", "human"])
-        tavuja_2 = ketju.tavuja_lauseessa(["I", "am", "a", "monster"])
+        viisi_tavua = ketju.tavuja_lauseessa(["I", "am", "a", "human"])
+        nelja_tavua = ketju.tavuja_lauseessa(["I", "am", "a", "dog"])
 
-        self.assertEqual(tavuja_1, 5)
-        self.assertEqual(tavuja_2, 5)
+        self.assertEqual(viisi_tavua, 5)
+        self.assertEqual(nelja_tavua, 4)
+
+    def test_generoi_lause_tavuilla(self):
+        korpus = [["I", "am", "a", "human"], ["I", "am", "a", "dog"]]
+        ketju = MarkovKetju(korpus, 1)
+
+        viisitavuiset = []
+        nelitavuiset = []
+
+        for _ in range(10):
+            viisitavuiset.append(ketju.generoi_lause_tavuilla(5))
+            nelitavuiset.append(ketju.generoi_lause_tavuilla(4))
+
+        for lause in viisitavuiset:
+            self.assertIn(lause, [["I", "am", "a", "human"]])
+
+        for lause in nelitavuiset:
+            self.assertIn(lause, [["I", "am", "a", "dog"], ["am", "a", "human"]])

@@ -66,8 +66,8 @@ class MarkovKetju:
         )
         return sana[0]
 
-    def generoi_lause(self, pituus):
-        """Generoi lauseen käyttämällä luokan trieä
+    def generoi_lause_pituudella(self, pituus):
+        """Generoi vakiopituisen lauseen
 
         Parametrit:
             pituus (int): Lauseen pituus
@@ -83,7 +83,7 @@ class MarkovKetju:
         for _ in range(pituus - 1):
             seuraava_sana = self.valitse_sana(alkutila)
             if seuraava_sana is False:
-                return self.generoi_lause(pituus)
+                return self.generoi_lause_pituudella(pituus)
             lause.append(seuraava_sana)
 
             if len(alkutila) >= self.taso:
@@ -95,5 +95,46 @@ class MarkovKetju:
 
             uusi_tila.append(seuraava_sana)
             alkutila = uusi_tila
+
+        return lause
+
+    def generoi_lause_tavuilla(self, tavuja):
+        """Generoi lauseen jossa on tietty määrä tavuja
+
+        Parametrit:
+            tavuja (int): Lauseen tavujen määrä
+
+        Palautusarvo:
+            list: Lista sanoista (str), eli lause
+        """
+        lause = []
+        alkutila = [self.valitse_sana([""])]
+        for sana in alkutila:
+            lause.append(sana)
+
+        while True:
+            seuraava_sana = self.valitse_sana(alkutila)
+            if seuraava_sana is False:
+                return self.generoi_lause_tavuilla(tavuja)
+            lause.append(seuraava_sana)
+
+            if len(alkutila) >= self.taso:
+                uusi_tila = []
+                for sana in alkutila[1:]:
+                    uusi_tila.append(sana)
+            else:
+                uusi_tila = alkutila
+
+            uusi_tila.append(seuraava_sana)
+            alkutila = uusi_tila
+
+            if self.tavuja_lauseessa(lause) < tavuja:
+                continue
+
+            if self.tavuja_lauseessa(lause) == tavuja:
+                break
+
+            if self.tavuja_lauseessa(lause) > tavuja:
+                return self.generoi_lause_tavuilla(tavuja)
 
         return lause
