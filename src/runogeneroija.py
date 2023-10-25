@@ -64,8 +64,8 @@ def lauseet_runoksi(lauseet: list):
     """
     lauseet_merkkijonoina = [" ".join(lause) for lause in lauseet]
 
-    runo = "\n"
+    runo = ""
     for lause in lauseet_merkkijonoina:
-        runo += lause + "\n"
+        runo += "\n" + lause
 
     return runo

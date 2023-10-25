@@ -13,13 +13,13 @@ class TestRunogeneroija(unittest.TestCase):
     def test_generoi_yksi_rivi(self):
         runo = generoi_runo_pituudella(self.ketju, 1, 3)
 
-        self.assertEqual(runo, "\nMinä olen ihminen\n")
+        self.assertEqual(runo, "\nMinä olen ihminen")
         self.ketju.generoi_lause_pituudella.assert_called_with(3)
 
     def test_generoi_kolme_rivia(self):
         runo = generoi_runo_pituudella(self.ketju, 3, 3)
 
         self.assertEqual(
-            runo, "\nMinä olen ihminen\nMinä olen ihminen\nMinä olen ihminen\n"
+            runo, "\nMinä olen ihminen\nMinä olen ihminen\nMinä olen ihminen"
         )
         self.ketju.generoi_lause_pituudella.assert_called_with(3)

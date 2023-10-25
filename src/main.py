@@ -46,7 +46,7 @@ def pyyda_numero(pyynto: str, minimi, maksimi):
 
 def main():
     """Valikko runon generoimiseen"""
-    otsikko = "Runogeneroija"
+    otsikko = "\nRunogeneroija"
 
     asetukset = [
         "Lopeta",
@@ -68,7 +68,7 @@ def main():
         "Tanka",
     ]
 
-    paavalikko = TerminalMenu(asetukset)
+    paavalikko = TerminalMenu(asetukset, title=otsikko)
 
     while True:
         paavalikko_valinta = paavalikko.show()
