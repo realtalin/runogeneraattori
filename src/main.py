@@ -46,6 +46,8 @@ def pyyda_numero(pyynto: str, minimi, maksimi):
 
 def main():
     """Valikko runon generoimiseen"""
+    otsikko = "Runogeneroija"
+
     asetukset = [
         "Lopeta",
         "Generoi runo",
@@ -104,7 +106,9 @@ def main():
             asetukset[3] = "Markovin ketjun taso: "
             taso = None
             ketju = None
-            paavalikko = TerminalMenu(asetukset)
+            paavalikko = TerminalMenu(
+                asetukset, title=otsikko, cursor_index=paavalikko_valinta
+            )
 
         if paavalikko_valinta == 3:
             taso = pyyda_numero("Markovin ketjun taso (1-6): ", 1, 6)
@@ -115,7 +119,9 @@ def main():
                 print("Valitse ensin teksti")
                 asetukset[3] = "Markovin ketjun taso: "
 
-            paavalikko = TerminalMenu(asetukset)
+            paavalikko = TerminalMenu(
+                asetukset, title=otsikko, cursor_index=paavalikko_valinta
+            )
 
         if paavalikko_valinta == 4:
             runomittavalikko = TerminalMenu(runomitat)
@@ -141,7 +147,9 @@ def main():
                         asetukset.pop()
 
             asetukset[4] = f"Runomitta: {runomitat[runomittavalikko_valinta]}"
-            paavalikko = TerminalMenu(asetukset)
+            paavalikko = TerminalMenu(
+                asetukset, title=otsikko, cursor_index=paavalikko_valinta
+            )
 
         if paavalikko_valinta == 5:
             riveja = pyyda_numero(
@@ -151,7 +159,9 @@ def main():
             )
 
             asetukset[5] = f"Runon pituus: {riveja} riviä"
-            paavalikko = TerminalMenu(asetukset)
+            paavalikko = TerminalMenu(
+                asetukset, title=otsikko, cursor_index=paavalikko_valinta
+            )
 
         if paavalikko_valinta == 6:
             rivin_pituus = pyyda_numero(
@@ -161,7 +171,9 @@ def main():
             )
 
             asetukset[6] = f"Rivien pituus: {rivin_pituus} sanaa"
-            paavalikko = TerminalMenu(asetukset)
+            paavalikko = TerminalMenu(
+                asetukset, title=otsikko, cursor_index=paavalikko_valinta
+            )
 
 
 if __name__ == "__main__":
