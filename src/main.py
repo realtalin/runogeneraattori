@@ -57,7 +57,6 @@ def main():
     ]
 
     menu = TerminalMenu(asetukset)
-    teksti = nltk.corpus.gutenberg.raw("austen-sense.txt")
 
     while True:
         menu_valinta = menu.show()
