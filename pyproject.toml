@@ -13,6 +13,7 @@ coverage = "^7.3.1"
 pylint = "^2.17.5"
 invoke = "^2.2.0"
 syllables = "^1.0.7"
+simple-term-menu = "^1.6.1"
 
 
 [tool.poetry.group.dev.dependencies]

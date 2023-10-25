@@ -31,7 +31,7 @@ def generoi_runo(ketju, riveja, rivin_pituus):
     """
     lauseet = []
     for _ in range(riveja):
-        lauseet.append(ketju.generoi_lause(rivin_pituus))
+        lauseet.append(ketju.generoi_lause_pituudella(rivin_pituus))
 
     lauseet_merkkijonoina = [" ".join(lause) for lause in lauseet]
 
