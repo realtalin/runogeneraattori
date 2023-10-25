@@ -6,7 +6,7 @@ Markov-ketjuilla toteutettu runogeneraattori Helsingin Yliopiston Algoritmit ja 
 ## Käyttöohje
 
 1. Asenna [Python](https://www.python.org/downloads/) (^3.8) ja [Poetry](https://python-poetry.org/docs/#installation)
-2. Kloonaa repositorio
+2. Kloonaa tai lataa repositorio
 3. Asenna riippuvuudet komennolla ```poetry install``` 
 4. Aloita runojen generointi komennolla ```poetry run python3 src/main.py```
 
