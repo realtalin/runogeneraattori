@@ -8,8 +8,7 @@ Markov-ketjuilla toteutettu runogeneraattori Helsingin Yliopiston Algoritmit ja 
 1. Asenna [Python](https://www.python.org/downloads/) (^3.8) ja [Poetry](https://python-poetry.org/docs/#installation)
 2. Kloonaa repositorio
 3. Asenna riippuvuudet komennolla ```poetry install``` 
-4. Siirry virtuaaliympäristöön komennolla ```poetry shell```
-5. Generoi lauseita komennolla ```invoke generoi```
+4. Aloita runojen generointi komennolla ```poetry run python3 src/main.py```
 
 ## Viikkoraportit
 - [Viikko 1](https://github.com/realtalin/runogeneraattori/blob/master/dokumentaatio/viikkoraportit/viikko1.md)
