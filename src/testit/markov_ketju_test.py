@@ -1,6 +1,5 @@
 from collections import Counter
 import unittest
-from unittest.mock import MagicMock
 from markov_ketju import MarkovKetju
 
 
