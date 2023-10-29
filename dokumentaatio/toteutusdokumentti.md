@@ -14,10 +14,6 @@ Runogeneroija-moduulin funktiot luovat Markovin ketjun ja generoivat runoja käy
 
 Käyttöliittymä on yksinkertainen terminaalivalikko. Se on toteutettu tiedostossa main.py.
 
-#### Luokkakaavio
-
-
-
 ### Jatkokehitettävää
 
 Generoitujen lauseiden laatua voisi parantaa suodattamalla niitä jonkinlaisen esimerkiksi lauseenjäseniä tunnistamalla. Olisi myös kiva jos projektissa olisi mahdollista valita muitakin tekstejä kuin vain englanninkielisiä, parhaassa tapauksessa jopa omia tekstitiedostoja.
