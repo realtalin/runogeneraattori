@@ -119,7 +119,7 @@ class TestMarkovKetju(unittest.TestCase):
         self.assertTrue(7000 < maarat["koira"] < 8000)
         self.assertTrue(2000 < maarat["kissa"] < 3000)
 
-    def test_generoi_lause_yksi_sanajono_triessa_oikean_pituinen_lause(self):
+    def test_generoi_lause_pituudella_yksi_sanajono_triessa_saman_pituinen_lause(self):
         korpus = [["Minä", "olen", "ihminen"]]
 
         ketju = MarkovKetju(korpus, 2)
@@ -128,7 +128,7 @@ class TestMarkovKetju(unittest.TestCase):
 
         self.assertEqual(lause, ["Minä", "olen", "ihminen"])
 
-    def test_generoi_lause_yksi_sanajono_triessa_lyhyt_lause(self):
+    def test_generoi_lause_pituudella_yksi_sanajono_triessa_lyhyt_lause(self):
         korpus = [["Minä", "olen", "ihminen"]]
 
         ketju = MarkovKetju(korpus, 2)
@@ -150,6 +150,23 @@ class TestMarkovKetju(unittest.TestCase):
         self.assertTrue(["Minä", "en", "ole"] in lauseet)
         self.assertTrue(["en", "ole", "ihminen"] in lauseet)
 
+    def test_generoi_lauseita_toinen_sanajono_liian_lyhyt(self):
+        korpus = [
+            ["Minä", "olen", "ihminen"],
+            ["Minä", "olen", "koira", "enkä", "kissa"],
+        ]
+
+        ketju = MarkovKetju(korpus, 2)
+
+        lauseet = []
+
+        for _ in range(100):
+            lauseet.append(ketju.generoi_lause_pituudella(4))
+
+        self.assertTrue(["Minä", "olen", "ihminen" not in lauseet])
+        self.assertTrue(["Minä", "olen", "koira", "enkä"] in lauseet)
+        self.assertTrue(["olen", "koira", "enkä", "kissa"] in lauseet)
+
     def test_tavuja_lauseessa(self):
         ketju = MarkovKetju(self.korpus, 3)
 
@@ -166,7 +183,7 @@ class TestMarkovKetju(unittest.TestCase):
         viisitavuiset = []
         nelitavuiset = []
 
-        for _ in range(10):
+        for _ in range(100):
             viisitavuiset.append(ketju.generoi_lause_tavuilla(5))
             nelitavuiset.append(ketju.generoi_lause_tavuilla(4))
 
