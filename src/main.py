@@ -68,6 +68,12 @@ def main():
         "Tanka",
     ]
 
+    teksti = None
+    ketju = None
+    runomitta = None
+    riveja = None
+    rivin_pituus = None
+
     paavalikko = TerminalMenu(asetukset, title=otsikko)
 
     while True:
@@ -84,7 +90,7 @@ def main():
                 else:
                     print(generoi_runo_runomitalla(ketju, runomitta))
 
-            except UnboundLocalError:
+            except (UnboundLocalError, AttributeError, TypeError):
                 print(
                     "Valitse ensin teksti, ketjun taso, runomitta, ja mahdollisesti runon pituus sekä rivien pituus"
                 )
