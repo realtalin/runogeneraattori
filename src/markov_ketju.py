@@ -14,16 +14,15 @@ class MarkovKetju:
             taso (int): Markov-ketjun taso
         """
 
-        self.korpus = korpus
         self.taso = taso
         self.sanajonojen_pituus = taso + 1
-        self.trie = self._generoi_trie()
+        self.trie = self.__generoi_trie(korpus)
 
-    def _luo_sanajonot(self):
+    def __luo_sanajonot(self, korpus):
         """Luo kaikki taso + 1 pitkät sanajonot korpuksen lauseista"""
         sanajonot = []
 
-        for lause in self.korpus:
+        for lause in korpus:
             for sanajono in map(
                 list, zip(*(lause[i:] for i in range(self.sanajonojen_pituus)))
             ):
@@ -31,10 +30,10 @@ class MarkovKetju:
 
         return sanajonot
 
-    def _generoi_trie(self):
+    def __generoi_trie(self, korpus):
         """Lisää sanajonot trieen"""
         trie = Trie()
-        for sanajono in self._luo_sanajonot():
+        for sanajono in self.__luo_sanajonot(korpus):
             trie.lisaa(sanajono)
 
         return trie
