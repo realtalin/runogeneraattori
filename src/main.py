@@ -45,6 +45,7 @@ def pyyda_numero(pyynto: str, minimi, maksimi):
 
 
 def main():
+    # pylint: disable=all
     """Valikko runon generoimiseen"""
     otsikko = "\nRunogeneroija"
 
