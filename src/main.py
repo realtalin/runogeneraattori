@@ -57,7 +57,7 @@ def main():
     ]
 
     tekstit = [
-        "Emma, Jane Austen",
+        "Sense and Sensibility, Jane Austen",
         "Moby-Dick, Herman Melville",
         "Hamlet, William Shakespeare",
     ]
