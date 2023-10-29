@@ -1,5 +1,7 @@
 # Toteutus
 
+### Rakenne
+
 Ohjelma päärakenne koostuu kahdesta pääluokasta Trie ja MarkovKetju.
 
 Triessä on toteutettu Trie-tietorakenne. Trien metodeja ovat solujen lisääminen ja lapsien etsiminen.
@@ -8,9 +10,21 @@ MarkovKetju sisältää metodit sanajonojen luomiseen opetusdatasta, sanajonojen
 
 Tokenoija-moduulin tokenoi_teksti-apufunktio muuttaa raa'an merkkijonon (esim. romaani) lauseiksi ja sanoiksi, eli tokenoi sen.
 
-Runogeneroija-moduulin funktiot luovat ketjun ja generoivat runoja käyttäjän antamilla parametreilla.
+Runogeneroija-moduulin funktiot luovat Markovin ketjun ja generoivat runoja käyttäjän antamilla parametreilla.
 
-Käyttöliittymä on toteutettu tiedostossa main.py.
+Käyttöliittymä on yksinkertainen terminaalivalikko. Se on toteutettu tiedostossa main.py.
+
+#### Luokkakaavio
+
+
+
+### Jatkokehitettävää
+
+Generoitujen lauseiden laatua voisi parantaa suodattamalla niitä jonkinlaisen esimerkiksi lauseenjäseniä tunnistamalla. Olisi myös kiva jos projektissa olisi mahdollista valita muitakin tekstejä kuin vain englanninkielisiä, parhaassa tapauksessa jopa omia tekstitiedostoja.
+
+Käyttöliittymän toteutus oli hyvin nopea, ja jos sitä haluasi jatkokehittää, olisi järkevää toteuttaa se siistimmin ja modulaarisemmin. Esimerkiksi valikoille kannataisi tehdä oma luokka tai omia luokkia. Myös käyttäjän valintojen validoinnissa on puutteita. Tällä hetkellä ohjelma antaa käyttäjän tehdä asioita väärässä järjestyksessa, jolloin ohjelma kaatuisi ilman try-except-blokkia. Olisi järkevämpää ohjata käyttäjä väkisin tekemään valinnat oikeassa järjestyksessä.
+
+Testit on luotu iteratiivisesti ohjelman kehittyessä, ja jotkut niistä ovat hieman vanhentuneita, vaikkakin toimivia. Testaus olisi selvämpää, jos testejä refaktoroitaisiin ja konsolidoitaisiin.
 
 ### Laajat kielimallit
 
